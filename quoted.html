@@ -1,0 +1,4 @@
+{% extends "layout.html" %}
+{% block main %}
+<p>{{ stock['name'] }} ({{ stock['symbol'] }}) costs {{ stock['price'] | usd }}</p>
+{% endblock %}

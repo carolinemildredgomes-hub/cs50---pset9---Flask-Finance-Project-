@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h2>Portfolio</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in holdings %}
+        <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.shares }}</td>
+            <td>{{ stock.price | usd }}</td>
+            <td>{{ stock.total | usd }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4">Cash</th>
+            <td>{{ cash | usd }}</td>
+        </tr>
+        <tr>
+            <th colspan="4">Grand Total</th>
+            <td>{{ total | usd }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="mt-3">
+    <a class="btn btn-primary" href="/buy">Buy Stocks</a>
+    <a class="btn btn-secondary" href="/sell">Sell Stocks</a>
+    <a class="btn btn-info" href="/add_cash">Add Cash</a>
+    <a class="btn btn-warning" href="/history">Transaction History</a>
+</div>
+{% endblock %}
